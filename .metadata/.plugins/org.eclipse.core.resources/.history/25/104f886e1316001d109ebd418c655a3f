@@ -1,0 +1,5 @@
+package apps.board.service;
+
+public class BoardService {
+
+}

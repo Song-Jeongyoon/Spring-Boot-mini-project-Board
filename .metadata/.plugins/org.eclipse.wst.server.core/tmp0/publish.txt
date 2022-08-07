@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Aug 07 00:58:35 KST 2022
+org.eclipse.jst.jee.server\:demo1=C\:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\apache-tomcat-9.0.46\\wtpwebapps\\demo1
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\sjyju\\.m2\\repository\\org\\springframework\\spring-web\\5.3.22\\spring-web-5.3.22.jar=C\:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\apache-tomcat-9.0.46\\wtpwebapps\\demo1\\WEB-INF\\lib\\spring-web-5.3.22.jar

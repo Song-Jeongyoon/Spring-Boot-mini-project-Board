@@ -1,0 +1,24 @@
+package com.example.demo1.board.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.example.demo1.board.*;
+
+@Mapper
+public interface BoardMapper {
+	
+	// 게시글 개수
+	public int boardCount() throws Exception;
+	
+	// 게시글 목록
+	public List<BoardDTO> boardList() throws Exception;
+	
+	// 게시글 상세
+	public BoardDTO boardDetail(int bno) throws Exception;
+	
+	// 게시글 수정
+	public void boardUpdate(BoardDTO board) throws Exception;
+	
+}
