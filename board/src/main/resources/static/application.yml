@@ -1,5 +1,5 @@
 spring:
   mvc:
     view:
-      prefix: /webapp/jsp/
-      suffix: .jsp
+      prefix: 
+      suffix: 

@@ -1,9 +1,0 @@
-# database
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url: jdbc:mysql://host:port/epeople?characterEncoding=utf8
-spring.datasource.username: root
-spring.datasource.password: 000710jy
-
-# mybatis config
-mybatis.type-aliases-package=com.example.mybatisStudy.vo #내 VO 파일 경로
-mybatis.mapper-locations=mybatis/mapper/**/*.xml

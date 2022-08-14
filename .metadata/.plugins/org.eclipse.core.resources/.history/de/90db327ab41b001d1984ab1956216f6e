@@ -1,0 +1,17 @@
+# database
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url: jdbc:mysql://localhost:3306/board?characterEncoding=utf8
+spring.datasource.username: root
+spring.datasource.password: 000710jy
+
+
+
+#mybatis.type-aliases-package=com.example.demo1.vo # 내 DTO 파일 경로 넣어야함
+#mybatis.mapper-locations=mybatis/mapper/**/*.xml
+mybatis.configuration.map-underscore-to-camel-case=true
+
+# jsp
+#spring.mvc.view.prefix=/src/main/webapp/jsp/
+#spring.mvc.view.suffix=.jsp
+
+
