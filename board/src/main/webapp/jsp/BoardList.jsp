@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8"> 
 <title>게시판</title>
+
 </head>
 <body>
 
@@ -18,14 +19,15 @@
 	<input type="text" name="searchBox">
 	<input type="submit" value="검색">
 </form>	
+<br>
 
 <div class="container">
 	<table class="table">
 		<colgroup>
 			<col width="15%"/>
-			<col width="*"/>
-			<col width="15%"/>
+			<col width="40%"/>
 			<col width="25%"/>
+			<col width="30%"/>
 		</colgroup>
 		<thead>
 			<tr>  
@@ -36,14 +38,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="list" items="${list }">
-			<tr>	
-				<td ${list.idx}></td>
-				<td ${list.title}></td>
-				<td ${list.writer}></td>
-				<td ${list.regdate}></td>
+			<tr>
+				<c:forEach var="l" items="${list }"> <!-- items 안에는 Controller의 mv.addObject명 -->
+					<td>${l.idx}</td>
+					<td>${l.title}</td>
+					<td>${l.writer}</td>
+					<td>${l.regdate}</td>
+				</c:forEach>				 
 			</tr>
-			</c:forEach>
 		</tbody>
 	</table>
 </div>

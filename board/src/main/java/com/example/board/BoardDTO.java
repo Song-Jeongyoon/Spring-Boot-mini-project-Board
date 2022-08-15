@@ -12,10 +12,10 @@ public class BoardDTO {
 	private String userPw;
 	private String userName;
 	
-	public String getidx() {
+	public String getIdx() {
 		return idx;
 	}
-	public void setidx(String idx) {
+	public void setIdx(String idx) {
 		this.idx = idx;
 	}
 	public String getTitle() {
