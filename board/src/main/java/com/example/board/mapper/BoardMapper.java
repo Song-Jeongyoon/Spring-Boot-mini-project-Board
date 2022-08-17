@@ -3,6 +3,8 @@ package com.example.board.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.board.BoardDTO;
 
@@ -12,16 +14,17 @@ import com.example.board.BoardDTO;
 // 매퍼를 사용하면 일일이 DAO를 만들지 않고, 인터페이스만을 이용해 편하게 개발이 가능
 public interface BoardMapper {
 	
-	// 게시글 개수
-	public int boardCount() throws Exception;
-	
-	// 게시글 목록
+	// 게시물 목록
 	public List<BoardDTO> boardList() throws Exception;
+	
+	// 게시글 목록 + 검색
+	public List<BoardDTO> boardListSearch(@RequestParam("searchType") String searchType, 
+			@RequestParam("keyword") String keyword) throws Exception;
+	
 	
 	// 게시글 상세
 	public BoardDTO boardContent(int bno) throws Exception;
 	
-	// 게시글 수정
-	public void boardUpdate(BoardDTO board) throws Exception;
+
 	
 }
