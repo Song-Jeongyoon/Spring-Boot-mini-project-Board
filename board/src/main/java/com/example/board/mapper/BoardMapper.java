@@ -3,7 +3,6 @@ package com.example.board.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.board.BoardDTO;
@@ -20,10 +19,9 @@ public interface BoardMapper {
 	// 게시글 목록 + 검색
 	public List<BoardDTO> boardListSearch(@RequestParam("searchType") String searchType, 
 			@RequestParam("keyword") String keyword) throws Exception;
-	
-	
+		
 	// 게시글 상세
-	public BoardDTO boardContent(int bno) throws Exception;
+	public BoardDTO boardDetail(@RequestParam(value="pIdx") int pIdx) throws Exception;
 	
 
 	

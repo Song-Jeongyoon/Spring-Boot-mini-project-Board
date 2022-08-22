@@ -2,9 +2,9 @@ package com.example.board.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.board.BoardDTO;
 import com.example.board.mapper.BoardMapper;
@@ -12,6 +12,7 @@ import com.example.board.mapper.BoardMapper;
 
 @Service       // 서비스임을 선언
 public class BoardServiceImpl implements BoardService{
+	BoardDTO dto; // 데이터 전달 확인용
 
 	@Autowired // Mapper와 연결
 	private BoardMapper boardMapper;
@@ -21,13 +22,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDTO> boardList() throws Exception {
 		return boardMapper.boardList();
 	}
-	
-	
+		
 	// 게시물 목록 + 검색
 	@Override
 	public List<BoardDTO> boardListSearch (String searchType, String keyword) throws Exception {
-		
 		return boardMapper.boardListSearch(searchType, keyword);
+	}
+	
+	// 게시물 상세 조회
+	@Override
+	public BoardDTO boardDetail(int pIdx) throws Exception {
+		
+		return boardMapper.boardDetail(pIdx);
 	}
 }
 

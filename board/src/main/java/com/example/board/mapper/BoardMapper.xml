@@ -23,7 +23,7 @@
 	<select id="boardListSearch" parameterType="String" resultType="com.example.board.BoardDTO">	
 
 			SELECT
-				idx, title, writer, regdate
+				idx AS pIdx, title, writer, regdate
 			FROM
 				board_table 						
 			<if test='searchType.equals("title")'>
@@ -37,6 +37,17 @@
  			</if>
 			ORDER BY idx DESC  
 
+	</select>
+	
+	<!-- 게시물 상세 조회 -->
+	<select id="boardDetail" parameterType="int" resultType="com.example.board.BoardDTO">
+			
+			SELECT
+				idx AS pIdx, title, content, writer, regdate
+			FROM
+				board_table	
+			WHERE idx = <![CDATA[#{pIdx}]]>
+			
 	</select>
 	
 </mapper>

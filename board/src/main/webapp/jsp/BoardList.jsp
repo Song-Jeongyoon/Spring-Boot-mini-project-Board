@@ -41,7 +41,7 @@
 		<tbody>
 			<tr>
 				<c:forEach var="l" items="${list }"> <!-- items 안에는 Controller의 mv.addObject명 -->
-					<td>${l.idx}</td>
+					<td>${l.pIdx}</td>
 					<td>${l.title}</td>
 					<td>${l.writer}</td>
 					<td>${l.regdate}</td>
