@@ -7,16 +7,15 @@
 	<!-- 게시물 목록 -->
 	<!-- <select> 태그를 이용하여 select 쿼리임을 나타냄. 앞서 mapper에서 말했던 메소드의 이름은 select 쿼리의 id값과 같아야함. -->
 	<select id="boardList" resultType="com.example.board.BoardDTO">	
-		<![CDATA[
 
 			SELECT
-				idx, title, writer, regdate
+				idx AS pIdx, title, writer, regdate
 			FROM
 				board_table 
  
 			ORDER BY idx DESC  
 
-		]]>
+
 	</select>  
   
   	<!-- 게시물 목록 + 검색 -->
@@ -33,7 +32,7 @@
  			 WHERE content LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
  			</if>												
  			<if test='searchType.equals("writer")'>
-  				WHERE writer = <![CDATA[#{keyword, jdbcType=VARCHAR}]]>
+  				WHERE writer = #{keyword}
  			</if>
 			ORDER BY idx DESC  
 
@@ -46,8 +45,17 @@
 				idx AS pIdx, title, content, writer, regdate
 			FROM
 				board_table	
-			WHERE idx = <![CDATA[#{pIdx}]]>
+			WHERE idx = [#{pIdx}
 			
 	</select>
+	
+	<!-- 게시물 등록 -->
+	<insert id="boardInsert" parameterType="com.example.board.BoardDTO">	
+		
+		insert INTO
+		board_table (idx, title, content, writer, regdate)
+		values (#{pIdx},#{title},#{content},#{writer},now())
+		
+	</insert>
 	
 </mapper>

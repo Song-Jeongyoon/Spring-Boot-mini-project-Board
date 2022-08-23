@@ -1,9 +1,0 @@
-package com.example.board;
-
-import java.util.List;
-
-public interface BoardService {
-
-    List<BoardDTO> boardList() throws Exception;
-
-}

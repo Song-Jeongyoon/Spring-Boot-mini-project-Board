@@ -1,5 +1,6 @@
 package com.example.board;
 
+import java.util.Date;
 
 public class BoardDTO {
 	
@@ -7,7 +8,7 @@ public class BoardDTO {
 	private String title;
 	private String content;
 	private String writer;
-	private String regdate;
+	private Date regdate;
 	
 
 	public int getpIdx() {
@@ -34,12 +35,13 @@ public class BoardDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
 	
 	
 }

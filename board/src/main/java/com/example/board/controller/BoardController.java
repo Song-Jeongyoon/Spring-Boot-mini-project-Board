@@ -5,18 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.example.board.BoardDTO;
 import com.example.board.service.BoardService;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Controller // 컨트롤러 선언
@@ -98,5 +93,20 @@ public class BoardController {
       	return boarddetail;
      }
      */
+    
+    // 게시물 작성폼 호출
+    @PostMapping(value="/openInsert")
+    @ResponseBody
+    public String openInsertForm () throws Exception {
+    	return "insert";
+    }
+    
+    // 게시물 등록
+    @PostMapping(value="/insertBoard")
+    @ResponseBody
+    public String insertBoard (BoardDTO reqDto) throws Exception {
+    	boardService.boardInsert(reqDto);
+    	return "게시물 등록 성공!"; 
+    }
     
 } 

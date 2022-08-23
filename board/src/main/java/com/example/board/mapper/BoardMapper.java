@@ -16,13 +16,15 @@ public interface BoardMapper {
 	// 게시물 목록
 	public List<BoardDTO> boardList() throws Exception;
 	
-	// 게시글 목록 + 검색
+	// 게시물 목록 + 검색
 	public List<BoardDTO> boardListSearch(@RequestParam("searchType") String searchType, 
 			@RequestParam("keyword") String keyword) throws Exception;
 		
-	// 게시글 상세
+	// 게시물 상세
 	public BoardDTO boardDetail(@RequestParam(value="pIdx") int pIdx) throws Exception;
 	
+	// 게시물 등록
+	public void boardInsert(BoardDTO reqDto) throws Exception;
 
 	
 }

@@ -13,5 +13,9 @@ public interface BoardService {
     
 	// 게시물 상세 조회
 	BoardDTO boardDetail(int pIdx) throws Exception;
+	
+	// 게시물 등록
+	void boardInsert(BoardDTO reqDto) throws Exception;
+	
    
 }

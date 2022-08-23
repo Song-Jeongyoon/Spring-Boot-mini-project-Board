@@ -1,5 +1,0 @@
-spring:
-  mvc:
-    view:
-      prefix: /board/src/main/webapp/jsp/
-      suffix: .jsp

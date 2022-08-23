@@ -32,8 +32,13 @@ public class BoardServiceImpl implements BoardService{
 	// 게시물 상세 조회
 	@Override
 	public BoardDTO boardDetail(int pIdx) throws Exception {
-		
 		return boardMapper.boardDetail(pIdx);
+	}
+	
+	// 게시물 등록
+	@Override
+	public void boardInsert(BoardDTO boardDto) throws Exception {
+		boardMapper.boardInsert(boardDto);		
 	}
 }
 
