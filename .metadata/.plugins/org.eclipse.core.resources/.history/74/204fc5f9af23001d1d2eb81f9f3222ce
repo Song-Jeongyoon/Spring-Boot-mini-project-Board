@@ -117,7 +117,7 @@ public class BoardController {
      */
     
     // 게시물 수정
-    @PutMapping(value="/updateBoard")
+    @PutMapping(value="/update")
     @ResponseBody
     public String updateBoard (BoardDTO reqDto) throws Exception {
     	boardService.boardUpdate(reqDto);

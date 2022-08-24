@@ -53,8 +53,8 @@
 	<insert id="boardInsert" parameterType="com.example.board.BoardDTO">	
 		
 		insert INTO
-		board_table (title, content, writer, regdate)
-		values (#{title},#{content},#{writer},now())
+		board_table (idx, title, content, writer, regdate)
+		values (#{pIdx},#{title},#{content},#{writer},now())
 		
 	</insert>
 	

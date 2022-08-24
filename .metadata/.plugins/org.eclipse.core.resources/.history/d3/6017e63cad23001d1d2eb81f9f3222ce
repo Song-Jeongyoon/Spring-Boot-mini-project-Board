@@ -40,11 +40,5 @@ public class BoardServiceImpl implements BoardService{
 	public void boardInsert(BoardDTO boardDto) throws Exception {
 		boardMapper.boardInsert(boardDto);		
 	}
-	
-	// 게시물 수정
-	@Override
-	public void boardUpdate(BoardDTO reqDto) throws Exception {
-		boardMapper.boardUpdate(reqDto);		
-	}
 }
 

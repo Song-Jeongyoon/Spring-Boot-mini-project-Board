@@ -110,18 +110,11 @@ public class BoardController {
     	return "게시물 등록 성공!"; 
     }
     
-    /*
-     * Put과 Post의 차이 : 멱등성 (동일한 요청을 한 번 보내는 것과 여러 번 연속으로 보내는 것이 같은 효과를 지님.)
-     * PUT은 멱등성을 가짐
-     * 여러 번 호출할 경우, 클라이언트가 받는 응답은 동일. 즉 똑같은 수정을 여러번해도 변경되지 않는다.
-     */
-    
     // 게시물 수정
-    @PutMapping(value="/updateBoard")
+    @PutMapping(value="/update")
     @ResponseBody
     public String updateBoard (BoardDTO reqDto) throws Exception {
-    	boardService.boardUpdate(reqDto);
-    	return "게시물 수정 성공!";
+    	
     }
     
 } 
