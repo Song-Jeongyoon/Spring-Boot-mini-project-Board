@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -34,6 +35,7 @@ public class BoardController {
      */ 
     //@RequestMapping("/openBoardList.do") 
     
+    
     //게시물 목록
     @RequestMapping(value = "/openBoardList")
     public ModelAndView openBoardList() throws Exception{
@@ -42,7 +44,7 @@ public class BoardController {
     	* logger.debug("boardController dedug");
 		* logger.info("boardController info");
 		* logger.error("boardController error");
-		*/ 
+		*/
 		    	 	
     	// jsp파일 부르기 - 방법1
     	// return "BoardList"; (String 메소드로 변경)
@@ -53,15 +55,33 @@ public class BoardController {
         List<BoardDTO> boardlist = boardService.boardList();  
         mv.addObject("list", boardlist);
 
-        return mv;
-        
+        return mv;      
     }
-    
-    // 게시판 목록 조회 + 검색 
+       
+    /*
+    // 게시판 목록 조회 + 검색 (Get)
     @GetMapping(value = "/search")
     // localhost:8080/openBoardList/search?searchType=writer&keyword=최수빈 <- 이런식으로 구글에 직접 입력하여 확인
     public ModelAndView search(@RequestParam(value="searchType") String searchType, 
     					@RequestParam(value="keyword") String keyword) throws Exception{ // URL을 통해 searchType과 keyword를 받아낼 수 있도록
+    	
+    	ModelAndView mv = new ModelAndView("/BoardList");
+    	List<BoardDTO> boardlist = boardService.boardListSearch(searchType, keyword);
+    	mv.addObject("list", boardlist);
+
+        return mv;
+    }*/
+       
+    		/*
+    		 * Post과 Get의 차이
+    		 * GET method는 클라이언트에서 서버로 어떠한 리소스로 부터 정보를 요청하기 위해 사용. 쿼리스트링 포함.
+    		 * POST method는 리소스를 생성/업데이트하기 위해 서버에 데이터를 보내는 데 사용. 데이터가 body로 전송되므로 보안에 강함.
+    		 */
+       
+    // 게시판 목록 조회 + 검색 (Post) 
+    @PostMapping(value = "/search")
+    public ModelAndView search(@RequestParam(value="searchType") String searchType, 
+    					@RequestParam(value="keyword") String keyword) throws Exception{ 
     	
     	ModelAndView mv = new ModelAndView("/BoardList");
     	List<BoardDTO> boardlist = boardService.boardListSearch(searchType, keyword);
@@ -106,22 +126,42 @@ public class BoardController {
     @PostMapping(value="/insertBoard")
     @ResponseBody
     public String insertBoard (BoardDTO reqDto) throws Exception {
-    	boardService.boardInsert(reqDto);
-    	return "게시물 등록 성공!"; 
+    	
+    	if (reqDto != null) {
+    		boardService.boardInsert(reqDto);    	
+    		return "게시물 등록 성공!"; 
+    	} else {
+    		return "게시물 등록 실패";
+    	}
     }
     
-    /*
-     * Put과 Post의 차이 : 멱등성 (동일한 요청을 한 번 보내는 것과 여러 번 연속으로 보내는 것이 같은 효과를 지님.)
-     * PUT은 멱등성을 가짐
-     * 여러 번 호출할 경우, 클라이언트가 받는 응답은 동일. 즉 똑같은 수정을 여러번해도 변경되지 않는다.
-     */
+    		/*
+    		 * Put과 Post의 차이 : 멱등성 (동일한 요청을 한 번 보내는 것과 여러 번 연속으로 보내는 것이 같은 효과를 지님.)
+    		 * PUT은 멱등성을 가짐
+    		 * 여러 번 호출할 경우, 클라이언트가 받는 응답은 동일. 즉 똑같은 수정을 여러번해도 변경되지 않는다.
+    		 */
     
     // 게시물 수정
     @PutMapping(value="/updateBoard")
     @ResponseBody
     public String updateBoard (BoardDTO reqDto) throws Exception {
-    	boardService.boardUpdate(reqDto);
-    	return "게시물 수정 성공!";
+    	
+    	if (reqDto != null) {
+    		boardService.boardUpdate(reqDto);
+    		return "게시물 수정 성공!";  		
+    	} else {
+    		return "게시물 수정 실패";
+    	}
+    }
+    
+    // 게시물 삭제
+    @DeleteMapping(value="/deleteBoard")
+    @ResponseBody
+    public String deleteBoard (@RequestParam(value="pIdx") int pIdx) throws Exception {
+    	
+    	boardService.boardDelete(pIdx);
+    	return "게시물 삭제 성공!";  		
+    	
     }
     
 } 

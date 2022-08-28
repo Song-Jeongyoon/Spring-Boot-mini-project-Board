@@ -24,16 +24,17 @@
 			SELECT
 				idx AS pIdx, title, writer, regdate
 			FROM
-				board_table 						
-			<if test='searchType.equals("title")'>
- 			 WHERE title LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
- 			</if> 
- 			<if test='searchType.equals("content")'>
- 			 WHERE content LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
- 			</if>												
- 			<if test='searchType.equals("writer")'>
-  				WHERE writer = #{keyword}
- 			</if>
+				board_table 
+			WHERE 1=1						
+				<if test='searchType.equals("title")'>
+ 					AND title LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
+ 				</if> 
+ 				<if test='searchType.equals("content")'>
+ 					AND content LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
+ 				</if>												
+ 				<if test='searchType.equals("writer")'>
+  					AND writer = #{keyword}
+ 				</if>
 			ORDER BY idx DESC  
 
 	</select>
@@ -45,7 +46,7 @@
 				idx AS pIdx, title, content, writer, regdate
 			FROM
 				board_table	
-			WHERE idx = [#{pIdx}
+			WHERE idx = #{pIdx}
 			
 	</select>
 	
@@ -68,5 +69,11 @@
 		WHERE
 			idx = #{pIdx}
 	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM board_table
+		WHERE idx = #{pIdx};
+	</delete>
 	
 </mapper>

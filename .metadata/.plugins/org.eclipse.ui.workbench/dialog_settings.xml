@@ -19,6 +19,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\sjyju\Desktop\2022-8-mini\게시판_등록수정_완료.zip"/>
 			<item value="C:\Users\sjyju\Desktop\2022-8-mini\게시판_상세조회_완료.zip"/>
 			<item value="C:\Users\sjyju\Desktop\2022-8-mini\게시판_상세조회_오류.zip"/>
 			<item value="C:\Users\sjyju\Desktop\2022-8-mini\게시판_2주차_검색까지.zip"/>

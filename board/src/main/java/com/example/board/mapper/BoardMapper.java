@@ -28,6 +28,9 @@ public interface BoardMapper {
 	
 	// 게시물 수정
 	public void boardUpdate(BoardDTO reqDto) throws Exception;
+	
+	// 게시물 삭제
+	public void boardDelete(int pIdx) throws Exception;
 
 	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- forEach사용 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +45,7 @@
 					<td>${l.pIdx}</td>
 					<td>${l.title}</td>
 					<td>${l.writer}</td>
-					<td>${l.regdate}</td>
+					<td><fmt:formatDate value="${l.regdate}" pattern="yyyy-MM-dd"/></td>
 				</c:forEach>				 
 			</tr>
 		</tbody>

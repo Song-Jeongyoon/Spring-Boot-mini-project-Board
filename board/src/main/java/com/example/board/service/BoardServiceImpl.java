@@ -46,5 +46,11 @@ public class BoardServiceImpl implements BoardService{
 	public void boardUpdate(BoardDTO reqDto) throws Exception {
 		boardMapper.boardUpdate(reqDto);		
 	}
+	
+	// 게시물 삭제
+	@Override
+	public void boardDelete(int pIdx) throws Exception {
+		boardMapper.boardDelete(pIdx);		
+	}
 }
 

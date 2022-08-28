@@ -19,5 +19,8 @@ public interface BoardService {
 	
 	// 게시물 수정
 	void boardUpdate(BoardDTO reqDto) throws Exception;
+	
+	// 게시물 삭제
+	void boardDelete(int pIdx) throws Exception;
    
 }
