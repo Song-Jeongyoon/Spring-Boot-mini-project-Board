@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board.mapper.BoardMapper">	<!-- xml파일을 사용할 mapper가 있는 경로 -->
+  
+	<!-- 게시물 목록 -->
+	<!-- pageStart는 화면에 뿌릴 첫번쨰 게시물의 idx , pageSize는 화면에 뿌려질 게시물 개수-->
+	<!-- <select> 태그를 이용하여 select 쿼리임을 나타냄. 앞서 mapper에서 말했던 메소드의 이름은 select 쿼리의 id값과 같아야함. -->
+	<select id="boardList" parameterType="com.example.board.Criteria" resultType="com.example.board.BoardDTO">	
+
+			SELECT
+				row_number() over(order by idx) as pIdx, title, writer, regdate
+			FROM
+				board_table
+			ORDER BY idx DESC 
+			LIMIT #{pageStart}, #{pageSize}
+
+	</select>  
+  
+  	<!-- 게시물 목록 + 검색 -->
+	<select id="boardListSearch" parameterType="String" resultType="com.example.board.BoardDTO">	
+
+			SELECT
+				idx AS pIdx, title, writer, regdate
+			FROM
+				board_table 
+			WHERE 1=1						
+				<if test='searchType.equals("title")'>
+ 					AND title LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
+ 				</if> 
+ 				<if test='searchType.equals("content")'>
+ 					AND content LIKE <![CDATA[ concat('%', #{keyword}, '%')]]>
+ 				</if>												
+ 				<if test='searchType.equals("writer")'>
+  					AND writer = #{keyword}
+ 				</if>
+			ORDER BY idx DESC  
+
+	</select>
+	
+	<!-- 게시물 상세 조회 -->
+	<select id="boardDetail" parameterType="int" resultType="com.example.board.BoardDTO">
+			
+			SELECT
+				idx AS pIdx, title, content, writer, regdate
+			FROM
+				board_table	
+			WHERE idx = #{pIdx}
+			
+	</select>
+	
+	<!-- 게시물 등록 -->
+	<insert id="boardInsert" parameterType="com.example.board.BoardDTO">	
+		
+		insert INTO
+		board_table (title, content, writer, regdate)
+		values (#{title},#{content},#{writer},now())
+		
+	</insert>
+	
+	<!-- 게시물 수정 -->
+	<update id="boardUpdate" parameterType="com.example.board.BoardDTO">
+		UPDATE 
+			board_table
+		SET
+			title = #{title},
+			content = #{content}
+		WHERE
+			idx = #{pIdx}
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM board_table
+		WHERE idx = #{pIdx};
+	</delete>
+	
+	<!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(*) from board_table
+	</select>
+	
+</mapper>

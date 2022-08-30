@@ -1,8 +1,9 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- forEach사용 -->
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- 등록일 날짜포맷 -->
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +13,13 @@
 <body>
 
 <!-- 검색기능. action 기능을 통해 넘어가게 -->
-<form action="/board/search" method="GET"> 
+<form action="/board/search" method="Post"> 
 	<select name = "searchType" >
-		<option value="title" <c:if test="${page.searchType eq 'title'}">selected</c:if>>제목</option>
-		<option value="content" <c:if test="${page.searchType eq 'content'}">selected</c:if>>내용</option>
-		<option value="writer" <c:if test="${page.searchType eq 'writer'}">selected</c:if>>작성자</option>
+		<option value="title" <c:if test="${searchType eq 'title'}">selected</c:if>>제목</option>
+		<option value="content" <c:if test="${searchType eq 'content'}">selected</c:if>>내용</option>
+		<option value="writer" <c:if test="${searchType eq 'writer'}">selected</c:if>>작성자</option>
 	</select>
-	<input value="${page.keyword}" name="keyword" type="text">
+	<input value="${keyword}" name="keyword" type="text">
 	<input type="submit" value="검색">
 </form>	
 <br>
@@ -40,14 +41,15 @@
 			</tr>
 		</thead>
 		<tbody>
+			<!-- items 안에는 Controller의 mv.addObject명 -->
+			<c:forEach var="l" items="${list }" varStatus="status"> 
 			<tr>
-				<c:forEach var="l" items="${list }"> <!-- items 안에는 Controller의 mv.addObject명 -->
 					<td>${l.pIdx}</td>
 					<td>${l.title}</td>
 					<td>${l.writer}</td>
 					<td><fmt:formatDate value="${l.regdate}" pattern="yyyy-MM-dd"/></td>
-				</c:forEach>				 
 			</tr>
+			</c:forEach>				 
 		</tbody>
 	</table>
 </div>

@@ -38,8 +38,8 @@ public class BoardController {
     
     //게시물 목록
     @RequestMapping(value = "/openBoardList")
-    public ModelAndView openBoardList() throws Exception{
-    	
+    public ModelAndView openBoardList(@RequestParam(value="pageStart") int pageStart, @RequestParam(value="pageSize") int pageSize) throws Exception{
+    	    	
     	/*
     	* logger.debug("boardController dedug");
 		* logger.info("boardController info");
@@ -52,7 +52,7 @@ public class BoardController {
     	// jsp파일 부르기 - 방법2	   	
     	ModelAndView mv = new ModelAndView("/BoardList");    	
         //게시글 목록을 조회하기 위해 ServiceImpl 클래스의 boardList 메서드 호출
-        List<BoardDTO> boardlist = boardService.boardList();  
+        List<BoardDTO> boardlist = boardService.boardList(pageStart, pageSize);  
         mv.addObject("list", boardlist);
 
         return mv;      

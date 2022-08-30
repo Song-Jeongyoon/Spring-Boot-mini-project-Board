@@ -2,11 +2,10 @@ package com.example.board.service;
 
 import java.util.List;
 import com.example.board.BoardDTO;
-
 public interface BoardService {
 
 	// 게시물 목록
-	List<BoardDTO> boardList() throws Exception;
+	List<BoardDTO> boardList(int pageStart, int pageSize) throws Exception;
 	
 	// 게시물 목록 + 검색
 	List<BoardDTO> boardListSearch(String searchType, String keyword) throws Exception;
@@ -22,5 +21,8 @@ public interface BoardService {
 	
 	// 게시물 삭제
 	void boardDelete(int pIdx) throws Exception;
+	
+	// 게시물 총 개수
+	int count() throws Exception;
    
 }

@@ -29,14 +29,12 @@
     <fullyQualifiedTypeName name="sun.util.logging.resources.logging"/>
     <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
     <fullyQualifiedTypeName name="org.apache.catalina.core.ApplicationContext"/>
-    <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionFactoryBean"/>
     <fullyQualifiedTypeName name="org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration"/>
     <fullyQualifiedTypeName name="org.apache.maven.model.Model"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.jdbc.SQL"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="com.example.board.BoardDTO"/>
@@ -56,4 +54,7 @@
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.jdbc.SQL"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JacksonInject"/>
+    <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionFactoryBean"/>
 </qualifiedTypeNameHistroy>

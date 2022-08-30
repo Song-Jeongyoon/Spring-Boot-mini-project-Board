@@ -5,16 +5,16 @@
 <mapper namespace="com.example.board.mapper.BoardMapper">	<!-- xml파일을 사용할 mapper가 있는 경로 -->
   
 	<!-- 게시물 목록 -->
+	<!-- pageStart는 화면에 뿌릴 첫번쨰 게시물의 행(0부터 시작) , pageSize는 화면에 뿌려질 게시물 개수-->
 	<!-- <select> 태그를 이용하여 select 쿼리임을 나타냄. 앞서 mapper에서 말했던 메소드의 이름은 select 쿼리의 id값과 같아야함. -->
-	<select id="boardList" resultType="com.example.board.BoardDTO">	
+	<select id="boardList" parameterType="int" resultType="com.example.board.BoardDTO">	
 
 			SELECT
-				idx AS pIdx, title, writer, regdate
+				row_number() over(order by idx) as pIdx, title, writer, regdate
 			FROM
-				board_table 
- 
-			ORDER BY idx DESC  
-
+				board_table
+			ORDER BY idx desc
+			LIMIT #{pageStart}, #{pageSize}
 
 	</select>  
   
@@ -75,5 +75,10 @@
 		DELETE FROM board_table
 		WHERE idx = #{pIdx};
 	</delete>
+	
+	<!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(*) from board_table
+	</select>
 	
 </mapper>

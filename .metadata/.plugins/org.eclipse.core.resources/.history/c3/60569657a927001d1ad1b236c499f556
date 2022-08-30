@@ -1,0 +1,26 @@
+package com.example.board.service;
+
+import java.util.List;
+import com.example.board.BoardDTO;
+
+public interface BoardService {
+
+	// 게시물 목록
+	List<BoardDTO> boardList(int pageNum, int perPageNum) throws Exception;
+	
+	// 게시물 목록 + 검색
+	List<BoardDTO> boardListSearch(String searchType, String keyword) throws Exception;
+    
+	// 게시물 상세 조회
+	BoardDTO boardDetail(int pIdx) throws Exception;
+	
+	// 게시물 등록
+	void boardInsert(BoardDTO reqDto) throws Exception;
+	
+	// 게시물 수정
+	void boardUpdate(BoardDTO reqDto) throws Exception;
+	
+	// 게시물 삭제
+	void boardDelete(int pIdx) throws Exception;
+   
+}
