@@ -50,7 +50,7 @@ public class BoardServiceImpl implements BoardService{
 	// 게시물 삭제
 	@Override
 	public int boardDelete(int pIdx) throws Exception {
-		return boardMapper.boardDelete(pIdx);		
+		boardMapper.boardDelete(pIdx);		
 	}
 	
 	// 게시물 총 개수

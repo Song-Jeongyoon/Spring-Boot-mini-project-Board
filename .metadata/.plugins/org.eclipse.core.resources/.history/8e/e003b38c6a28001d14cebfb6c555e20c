@@ -22,7 +22,7 @@
 	<select id="boardListSearch" parameterType="String" resultType="com.example.board.BoardDTO">	
 
 			SELECT
-				row_number() over(order by idx) as pIdx, title, writer, regdate
+				idx AS pIdx, title, writer, regdate
 			FROM
 				board_table 
 			WHERE 1=1						

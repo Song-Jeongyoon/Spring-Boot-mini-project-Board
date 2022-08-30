@@ -166,12 +166,9 @@ public class BoardController {
     public String deleteBoard (@RequestParam(value="pIdx") int pIdx) throws Exception {
     	
     	// mybatis에서 delete의 리턴 결과는 삭제된 행의 갯수 (없으면 0)
-    	if (boardService.boardDelete(pIdx) == 1) {
-    		//boardService.boardDelete(pIdx);
-    		return "게시물 삭제 성공!";  		
-    	} else {
-    		return "게시물 삭제 실패";
-    	}	
+    	
+    	boardService.boardDelete(pIdx);
+    	return "게시물 삭제 성공!";  		
     	
     }
     

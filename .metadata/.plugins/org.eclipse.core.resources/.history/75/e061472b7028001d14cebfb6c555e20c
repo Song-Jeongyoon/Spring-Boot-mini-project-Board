@@ -14,13 +14,13 @@ public interface BoardService {
 	BoardDTO boardDetail(int pIdx) throws Exception;
 	
 	// 게시물 등록
-	int boardInsert(BoardDTO reqDto) throws Exception;
+	void boardInsert(BoardDTO reqDto) throws Exception;
 	
 	// 게시물 수정
-	int boardUpdate(BoardDTO reqDto) throws Exception;
+	void boardUpdate(BoardDTO reqDto) throws Exception;
 	
 	// 게시물 삭제
-	int boardDelete(int pIdx) throws Exception;
+	void boardDelete(int pIdx) throws Exception;
 	
 	// 게시물 총 개수
 	int count() throws Exception;

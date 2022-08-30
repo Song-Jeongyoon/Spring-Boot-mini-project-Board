@@ -20,7 +20,7 @@ public interface BoardService {
 	int boardUpdate(BoardDTO reqDto) throws Exception;
 	
 	// 게시물 삭제
-	int boardDelete(int pIdx) throws Exception;
+	void boardDelete(int pIdx) throws Exception;
 	
 	// 게시물 총 개수
 	int count() throws Exception;

@@ -28,7 +28,7 @@ public interface BoardMapper {
 	public int boardUpdate(BoardDTO reqDto) throws Exception;
 	
 	// 게시물 삭제
-	public int boardDelete(int pIdx) throws Exception;
+	public void boardDelete(int pIdx) throws Exception;
 
 	// 게시물 총 개수
 	public int count() throws Exception;
