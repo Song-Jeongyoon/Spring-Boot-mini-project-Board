@@ -126,12 +126,9 @@ public class BoardController {
     @PostMapping(value="/insertBoard")
     @ResponseBody
     public String insertBoard (BoardDTO reqDto) throws Exception {
-    	
-    //System.out.println("boardService.boardInsert(reqDto) : " + boardService.boardInsert(reqDto));
-    	
+    	   	
     	// mybatis에서 insert의 리턴 결과는 1
-    	if (boardService.boardInsert(reqDto) == 1) {
-    		//boardService.boardInsert(reqDto);    	
+    	if (boardService.boardInsert(reqDto) == 1) {  	
     		return "게시물 등록 성공!"; 
     	} else {
     		return "게시물 등록 실패";
@@ -148,12 +145,9 @@ public class BoardController {
     @PutMapping(value="/updateBoard")
     @ResponseBody
     public String updateBoard (BoardDTO reqDto) throws Exception {
-    	
-    	//System.out.println("boardService.boardUpdate(reqDto) : " + boardService.boardUpdate(reqDto));
-    	
+    	   	
     	// mybatis에서 update의 리턴 결과는 업데이트된 행의 갯수 (없으면 0)
-    	if (boardService.boardUpdate(reqDto) == 1) {
-    		//boardService.boardUpdate(reqDto);
+    	if (boardService.boardUpdate(reqDto) > 0) {
     		return "게시물 수정 성공!";  		
     	} else {
     		return "게시물 수정 실패";
@@ -166,13 +160,11 @@ public class BoardController {
     public String deleteBoard (@RequestParam(value="pIdx") int pIdx) throws Exception {
     	
     	// mybatis에서 delete의 리턴 결과는 삭제된 행의 갯수 (없으면 0)
-    	if (boardService.boardDelete(pIdx) == 1) {
-    		//boardService.boardDelete(pIdx);
+    	if (boardService.boardDelete(pIdx) > 0) {
     		return "게시물 삭제 성공!";  		
     	} else {
     		return "게시물 삭제 실패";
-    	}	
-    	
+    	}	   	
     }
     
 } 
